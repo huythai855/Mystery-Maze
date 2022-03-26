@@ -1,0 +1,149 @@
+# depslib dependency file v1.0
+1647850110 source:c:\users\399pvd\máy tính\test environment\sdl_utils.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1647849916 source:c:\users\399pvd\máy tính\test environment\main.cpp
+	<iostream>
+	"SDL_Utils.h"
+
+1647850158 c:\users\399pvd\máy tính\test environment\sdl_utils.h
+	<SDL.h>
+	<SDL_image.h>
+
+1647851526 source:c:\users\399pvd\máy tính\test environment\texture.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+
+1648318427 source:c:\users\399pvd\desktop\test environment\main.cpp
+	"header/SDL_Utils.h"
+	"header/texture.h"
+
+1648284953 c:\users\399pvd\desktop\test environment\sdl_utils.h
+	<SDL.h>
+	<SDL_image.h>
+
+1648318946 source:c:\users\399pvd\desktop\test environment\sdl_utils.cpp
+	<iostream>
+	"header/SDL_Libs.h"
+	"header/globalVariables.h"
+
+1648286747 c:\users\399pvd\desktop\test environment\texture.h
+
+1648320563 source:c:\users\399pvd\desktop\test environment\texture.cpp
+	<iostream>
+	"header/SDL_Libs.h"
+	"header/texture.h"
+
+1648320587 c:\users\399pvd\desktop\test environment\header\texture.h
+	<string.h>
+	<string>
+
+1648312092 c:\users\399pvd\desktop\test environment\header\sdl_utils.h
+	<SDL.h>
+	<SDL_image.h>
+
+1648319350 source:c:\users\399pvd\desktop\test environment\dot.cpp
+	"header/dot.h"
+	"header/globalVariables.h"
+	<iostream>
+
+1648319346 c:\users\399pvd\desktop\test environment\header\dot.h
+	"SDL_Libs.h"
+	"texture.h"
+
+1648318532 c:\users\399pvd\desktop\test environment\header\globalvariables.h
+	<string.h>
+
+1648318720 c:\users\399pvd\desktop\test environment\header\sdl_libs.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1648324988 source:c:\users\399pvd\desktop\test2\dot.cpp
+	"header/dot.h"
+	"header/globalVariables.h"
+	<iostream>
+
+1648324988 c:\users\399pvd\desktop\test2\header\dot.h
+	"SDL_Libs.h"
+	"texture.h"
+
+1648325030 c:\users\399pvd\desktop\test2\header\sdl_libs.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1648324988 c:\users\399pvd\desktop\test2\header\texture.h
+	<string.h>
+	<string>
+
+1648325144 c:\users\399pvd\desktop\test2\header\globalvariables.h
+	<string.h>
+
+1648324988 source:c:\users\399pvd\desktop\test2\main.cpp
+	"header/SDL_Utils.h"
+	"header/texture.h"
+	"header/SDL_Libs.h"
+	"header/dot.h"
+	<iostream>
+
+1648324988 c:\users\399pvd\desktop\test2\header\sdl_utils.h
+	"SDL_Libs.h"
+
+1648324988 source:c:\users\399pvd\desktop\test2\sdl_utils.cpp
+	<iostream>
+	"header/SDL_Libs.h"
+	"header/globalVariables.h"
+
+1648324988 source:c:\users\399pvd\desktop\test2\texture.cpp
+	<iostream>
+	"header/SDL_Libs.h"
+	"header/texture.h"
+
+1648324988 source:c:\users\399pvd\desktop\mystery-maze\dot.cpp
+	"header/dot.h"
+	"header/globalVariables.h"
+	<iostream>
+
+1648324988 c:\users\399pvd\desktop\mystery-maze\header\dot.h
+	"SDL_Libs.h"
+	"texture.h"
+
+1648325030 c:\users\399pvd\desktop\mystery-maze\header\sdl_libs.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1648324988 c:\users\399pvd\desktop\mystery-maze\header\texture.h
+	<string.h>
+	<string>
+
+1648325305 c:\users\399pvd\desktop\mystery-maze\header\globalvariables.h
+	<string.h>
+
+1648324988 source:c:\users\399pvd\desktop\mystery-maze\sdl_utils.cpp
+	<iostream>
+	"header/SDL_Libs.h"
+	"header/globalVariables.h"
+
+1648324988 source:c:\users\399pvd\desktop\mystery-maze\texture.cpp
+	<iostream>
+	"header/SDL_Libs.h"
+	"header/texture.h"
+
+1648325157 source:c:\users\399pvd\desktop\mystery-maze\main.cpp
+	"header/SDL_Utils.h"
+	"header/texture.h"
+	"header/SDL_Libs.h"
+	"header/dot.h"
+	<iostream>
+
+1648324988 c:\users\399pvd\desktop\mystery-maze\header\sdl_utils.h
+	"SDL_Libs.h"
+
