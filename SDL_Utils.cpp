@@ -18,7 +18,7 @@ bool init(SDL_Window* &window, SDL_Renderer* &renderer){
         int imgFlags = IMG_INIT_PNG;
         IMG_Init(IMG_INIT_PNG);
     }
-    return true;
+    return success;
 };
 
 void close(SDL_Window* &window, SDL_Renderer* &renderer){

@@ -147,3 +147,47 @@
 1648324988 c:\users\399pvd\desktop\test22-4\header\sdl_utils.h
 	"SDL_Libs.h"
 
+1650580931 source:c:\users\399pvd\desktop\mystery-maze\dot.cpp
+	"header/dot.h"
+	"header/globalVariables.h"
+	<iostream>
+
+1650580860 c:\users\399pvd\desktop\mystery-maze\header\dot.h
+	"SDL_Libs.h"
+	"texture.h"
+	"globalVariables.h"
+
+1648325030 c:\users\399pvd\desktop\mystery-maze\header\sdl_libs.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+
+1650570390 c:\users\399pvd\desktop\mystery-maze\header\texture.h
+	<string.h>
+	<string>
+
+1650581118 c:\users\399pvd\desktop\mystery-maze\header\globalvariables.h
+	<string.h>
+
+1650577787 source:c:\users\399pvd\desktop\mystery-maze\sdl_utils.cpp
+	<iostream>
+	"header/SDL_Libs.h"
+	"header/globalVariables.h"
+
+1650572067 source:c:\users\399pvd\desktop\mystery-maze\texture.cpp
+	<iostream>
+	"header/SDL_Libs.h"
+	"header/texture.h"
+
+1650581100 source:c:\users\399pvd\desktop\mystery-maze\main.cpp
+	"header/SDL_Utils.h"
+	"header/texture.h"
+	"header/SDL_Libs.h"
+	"header/dot.h"
+	"header/globalVariables.h"
+	<iostream>
+
+1648324988 c:\users\399pvd\desktop\mystery-maze\header\sdl_utils.h
+	"SDL_Libs.h"
+

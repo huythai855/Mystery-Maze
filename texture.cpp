@@ -39,18 +39,18 @@ void Texture :: render(int x, int y, SDL_Renderer* &renderer){
     SDL_RenderCopy(renderer, texture, NULL, &characterRect);
 }
 
-void Texture :: render2( int x, int y, SDL_Rect* clip, SDL_Renderer* &renderer)
-{
-	//Set rendering space and render to screen
-	SDL_Rect renderQuad = { x, y, 32, 48 };
-
-	//Set clip rendering dimensions
-	if( clip != NULL ){
-		renderQuad.w = clip->w;
-		renderQuad.h = clip->h;
-	}
-
-	//Render to screen
-	SDL_RenderCopy( renderer, texture, clip, &renderQuad);
-
-}
+//void Texture :: render2( int x, int y, SDL_Rect* clip, SDL_Renderer* &renderer)
+//{
+//	//Set rendering space and render to screen
+//	SDL_Rect renderQuad = { x, y, 32, 48 };
+//
+//	//Set clip rendering dimensions
+//	if( clip != NULL ){
+//		renderQuad.w = clip->w;
+//		renderQuad.h = clip->h;
+//	}
+//
+//	//Render to screen
+//	SDL_RenderCopy( renderer, texture, clip, &renderQuad);
+//
+//}

@@ -3,12 +3,10 @@
 
 #include "SDL_Libs.h"
 #include "texture.h"
+#include "globalVariables.h"
 
 class Dot{
     public:
-        const int DOT_WIDTH = 20;
-        const int DOT_HEIGHT = 20;
-
         Dot();
         void handleEvent(SDL_Event &e, int &directory);
         void move(int &frame);

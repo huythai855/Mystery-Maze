@@ -2,70 +2,60 @@
 #include "header/texture.h"
 #include "header/SDL_Libs.h"
 #include "header/dot.h"
+#include "header/globalVariables.h"
 #include <iostream>
 
 SDL_Renderer* renderer = NULL;
 SDL_Window* window = NULL;
+Texture character[NUMBER_OF_SPRITE];
+SDL_Rect spriteClips[4];
+int character_choice = 0;
+
+int direction = DOWN;
+
 
 bool loadMedia(Texture &texture, std::string tmp){
 	bool success = true;
-
 	if( !texture.loadFromFile(tmp, renderer)){
 		printf( "Failed to load dot texture!\n" );
 		success = false;
 	}
-
 	return success;
+}
+
+void initDirection(){
+    for(int i=0; i<=3; i++){
+        spriteClips[i].x = i * CHARACTER_WIDTH;
+        spriteClips[i].y = 0;
+        spriteClips[i].w = CHARACTER_WIDTH;
+        spriteClips[i].h = CHARACTER_HEIGHT;
+    }
+}
+
+bool loadCharacter(){
+    std::string c_up = "img_src/" + pre[character_choice] + "_up.png";
+    std::string c_right = "img_src/" + pre[character_choice] + "_right.png";
+    std::string c_down = "img_src/" + pre[character_choice] + "_down.png";
+    std::string c_left = "img_src/" + pre[character_choice] + "_left.png";
+
+    if(!loadMedia(character[UP], c_up) ||
+       !loadMedia(character[RIGHT], c_right) ||
+       !loadMedia(character[DOWN], c_down) ||
+       !loadMedia(character[LEFT], c_left))
+        return false;
+    return true;
 }
 
 int main(int argc, char* argv[]){
 
-
-    Texture hp[4];
-    int direction = 2;
-
-    /// 1 up
-    /// 2 right
-    /// 3 down
-    /// 4 left
-
-    //loadMedia(hp[0], "img_src/right.png");
-
-    bool ok = true;
-
-
     if(!init(window, renderer))
         std::cerr << "Failed to initialize!\n";
     else{
-        if(!loadMedia(hp[0], "img_src/up.png") ||
-           !loadMedia(hp[1], "img_src/right.png") ||
-           !loadMedia(hp[2], "img_src/down.png") ||
-           !loadMedia(hp[3], "img_src/left.png"))
-            std::cerr << "Failed to load the media!\n";
+        if(!loadCharacter())
+            std::cerr << "Failed to load character!\n";
         else{
-
-            SDL_Rect gSpriteClips[4];
-            gSpriteClips[ 0 ].x =   0;
-            gSpriteClips[ 0 ].y =   0;
-            gSpriteClips[ 0 ].w =  32;
-            gSpriteClips[ 0 ].h = 48;
-
-            gSpriteClips[ 1 ].x =  32;
-            gSpriteClips[ 1 ].y =   0;
-            gSpriteClips[ 1 ].w =  32;
-            gSpriteClips[ 1 ].h = 48;
-
-            gSpriteClips[ 2 ].x = 64;
-            gSpriteClips[ 2 ].y =   0;
-            gSpriteClips[ 2 ].w =  32;
-            gSpriteClips[ 2 ].h = 48;
-
-            gSpriteClips[ 3 ].x = 96;
-            gSpriteClips[ 3 ].y =   0;
-            gSpriteClips[ 3 ].w =  32;
-            gSpriteClips[ 3 ].h = 48;
+            initDirection();
             int frame = 0;
-
             bool quit = false;
             SDL_Event event;
             Dot dot;
@@ -76,29 +66,21 @@ int main(int argc, char* argv[]){
                         quit = true;
                     dot.handleEvent(event, direction);
                 }
-                std::cerr << frame <<"\n";
 
                 dot.move(frame);
 
                 SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
                 SDL_RenderClear(renderer);
 
-                SDL_Rect* currentClip = &gSpriteClips[ frame / 4 ];
+                SDL_Rect* currentClip = &spriteClips[ frame / DECREASE_FOOT_STEP];
 
-                dot.render2(hp[direction], currentClip, renderer);
+                dot.render2(character[direction], currentClip, renderer);
                 SDL_RenderPresent(renderer);
-
-
             }
-
         }
     }
 
-    // Free resources and close SDL
     close(window, renderer);
-    //close1();
-
-
 
 
     return 0;
