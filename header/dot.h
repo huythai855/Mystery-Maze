@@ -10,9 +10,10 @@ class Dot{
         const int DOT_HEIGHT = 20;
 
         Dot();
-        void handleEvent(SDL_Event &e);
-        void move();
+        void handleEvent(SDL_Event &e, int &directory);
+        void move(int &frame);
         void render(Texture &texture, SDL_Renderer* &renderer);
+        void render2(Texture &texture, SDL_Rect* clip, SDL_Renderer* &renderer);
 
     private:
         int PosX, PosY;

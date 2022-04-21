@@ -5,7 +5,7 @@
 
 const int SCREEN_WIDTH = 500;
 const int SCREEN_HEIGHT = 500;
-const int DOT_VEL = 10;
+const int DOT_VEL = 4;
 const std::string WINDOW_TITLE = "Mystery Maze";
 
 #endif // GLOBALVARIABLES_H_INCLUDED
