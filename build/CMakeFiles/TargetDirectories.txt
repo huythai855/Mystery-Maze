@@ -1,0 +1,5 @@
+C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build/CMakeFiles/thai.dir
+C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build/CMakeFiles/package.dir
+C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build/CMakeFiles/package_source.dir
+C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build/CMakeFiles/edit_cache.dir
+C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build/CMakeFiles/rebuild_cache.dir

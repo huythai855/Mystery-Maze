@@ -1,87 +1,239 @@
-#include "header/SDL_Utils.h"
-#include "header/texture.h"
-#include "header/SDL_Libs.h"
-#include "header/dot.h"
-#include "header/globalVariables.h"
+
 #include <iostream>
+#include "CommonFunc.h"
+#include "PlayerObject.h"
+#include "ImpTimer.h"
+#include "BlockObject.h"
+#include "Geometric.h"
 
-SDL_Renderer* renderer = NULL;
-SDL_Window* window = NULL;
-Texture character[NUMBER_OF_SPRITE];
-SDL_Rect spriteClips[4];
-int character_choice = 0;
-
-int direction = DOWN;
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 640
 
 
-bool loadMedia(Texture &texture, std::string tmp){
-	bool success = true;
-	if( !texture.loadFromFile(tmp, renderer)){
-		printf( "Failed to load dot texture!\n" );
-		success = false;
-	}
-	return success;
-}
+BaseObject g_background;
+BaseObject g_ground;
 
-void initDirection(){
-    for(int i=0; i<=3; i++){
-        spriteClips[i].x = i * CHARACTER_WIDTH;
-        spriteClips[i].y = 0;
-        spriteClips[i].w = CHARACTER_WIDTH;
-        spriteClips[i].h = CHARACTER_HEIGHT;
-    }
-}
+TTF_Font* g_font_text = NULL;
+TTF_Font* g_font_MENU = NULL;
 
-bool loadCharacter(){
-    std::string c_up = "img_src/" + pre[character_choice] + "_up.png";
-    std::string c_right = "img_src/" + pre[character_choice] + "_right.png";
-    std::string c_down = "img_src/" + pre[character_choice] + "_down.png";
-    std::string c_left = "img_src/" + pre[character_choice] + "_left.png";
-
-    if(!loadMedia(character[UP], c_up) ||
-       !loadMedia(character[RIGHT], c_right) ||
-       !loadMedia(character[DOWN], c_down) ||
-       !loadMedia(character[LEFT], c_left))
+bool InitData()
+{
+    BOOL bSucess = true;
+    int ret = SDL_Init(SDL_INIT_VIDEO);
+    if (ret < 0)
         return false;
-    return true;
-}
 
-int main(int argc, char* argv[]){
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
-    if(!init(window, renderer))
-        std::cerr << "Failed to initialize!\n";
-    else{
-        if(!loadCharacter())
-            std::cerr << "Failed to load character!\n";
-        else{
-            initDirection();
-            int frame = 0;
-            bool quit = false;
-            SDL_Event event;
-            Dot dot;
+    g_window = SDL_CreateWindow("Mystery Maze", 
+                                SDL_WINDOWPOS_UNDEFINED,
+                                SDL_WINDOWPOS_UNDEFINED,
+                                SCREEN_WIDTH, SCREEN_HEIGHT,
+                                SDL_WINDOW_OPENGL);
 
-            while(!quit){
-                while(SDL_PollEvent(&event) != 0){
-                    if(event.type == SDL_QUIT)
-                        quit = true;
-                    dot.handleEvent(event, direction);
-                }
+    if (g_window != NULL)
+    {
+        g_screen = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
+        if (g_screen != NULL)
+        {
+            SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, 
+                                             RENDER_DRAW_COLOR, 
+                                             RENDER_DRAW_COLOR, 
+                                             RENDER_DRAW_COLOR);
+            int imgFlags = IMG_INIT_PNG;
+            if (!(IMG_Init(imgFlags) && imgFlags))
+                bSucess = false;
+        }
 
-                dot.move(frame);
+        if (TTF_Init() == -1)
+        {
+            bSucess = false;
+        }
 
-                SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-                SDL_RenderClear(renderer);
+        if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+        {
+            bSucess = false;
+        }
 
-                SDL_Rect* currentClip = &spriteClips[ frame / DECREASE_FOOT_STEP];
+        g_font_text = TTF_OpenFont("font//ARCADE.ttf", 38);
+        if (g_font_text == NULL)
+            return false;
 
-                dot.render2(character[direction], currentClip, renderer);
-                SDL_RenderPresent(renderer);
-            }
+        g_font_MENU = TTF_OpenFont("font//ARCADE.ttf", 80);
+        if (g_font_MENU == NULL)
+        {
+            return false;
         }
     }
 
-    close(window, renderer);
+    return bSucess;
+}
 
 
+bool LoadBackground()
+{
+    bool ret = g_background.LoadImageFile("img//bkgn.png", g_screen);
+    return ret;
+}
+
+
+void close()
+{
+    g_background.Free();
+    SDL_DestroyRenderer(g_screen);
+    g_screen = NULL;
+
+    SDL_DestroyWindow(g_window);
+    g_window = NULL;
+
+    IMG_Quit();
+    SDL_Quit();
+}
+
+SDL_Window* window = nullptr;
+SDL_Renderer* renderer = nullptr;
+SDL_Event event;
+
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+    if (InitData() == false){
+        return -1;
+    }
+
+    ImpTimer fps;
+    bool quit = false;
+
+    int ret_menu = SDLCommonFunc::ShowMenu(g_screen, g_font_MENU, "Play Game", "Exit", "img//MENU.png");
+    if (ret_menu == 1)
+        quit = true;
+
+    if (!LoadBackground())
+    {
+        return -1;
+    }
+
+    bool ret = g_ground.LoadImageFile("img//ground2.png", g_screen);
+    if (ret == false)
+    {
+        return -1;
+    }
+    g_ground.SetRect(0, GROUND_MAP);
+
+again_label:
+    
+    Mix_Music *theme = nullptr;
+    
+    theme = Mix_LoadMUS("sound//theme.mp3");
+    if (theme == nullptr)
+    {
+        cout << Mix_GetError() << '\n';
+    }
+
+    Mix_PlayMusic(theme, -1);
+    TextObject text_count_;
+    text_count_.setColor(TextObject::WHITE_TEXT);
+
+    PlayerObject player;
+    player.Reset();
+    ret = player.LoadImg("img//fl_bird.png", g_screen);
+    player.SetRect(100, 100);
+    if (ret == false)
+    {
+        return -1;
+    }
+
+    BlockManager manage_block;
+    ret = manage_block.InitBlockList(g_screen);
+    if (ret == false)
+        return -1;
+
+    while (!quit)
+    {
+        fps.start();
+        while (SDL_PollEvent(&g_event) != 0)
+        {
+            if (g_event.type == SDL_QUIT)
+            {
+                quit = true;
+            }
+
+            player.HandleInputAction(g_event, g_screen);
+        }
+
+        SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, 
+                                RENDER_DRAW_COLOR, 
+                                RENDER_DRAW_COLOR, 
+                                RENDER_DRAW_COLOR);
+
+        SDL_RenderClear(g_screen);
+
+        g_background.Render(g_screen, NULL);
+
+        manage_block.SetPlayerRect(player.GetRect());
+
+        bool is_falling = player.GetFalling();
+        if (is_falling == true)
+        {
+            manage_block.SetStopMoving(true);
+        }
+
+        manage_block.Render(g_screen);
+
+        bool end_game = manage_block.GetColState();
+        if (end_game == true)
+        {
+            player.SetFalling(true);
+        }
+        player.DoFalling(g_screen);
+        player.Show(g_screen);
+
+        //Draw Geometric
+        GeometricFormat rectange_size(0, 0, SCREEN_WIDTH, 30);
+        ColorData color_data(36, 36, 36);
+        Gemometric::RenderRectange(rectange_size, color_data, g_screen);
+
+        GeometricFormat outlie_size(1, 1, SCREEN_WIDTH - 1, 28);
+        ColorData color_data1(255, 255, 255);
+        Gemometric::RenderOutline(outlie_size, color_data1, g_screen);
+
+        int count = manage_block.GetCount();
+        std::string count_str = std::to_string(count);
+        text_count_.SetText(count_str);
+        text_count_.loadFromRenderedText(g_font_text, g_screen);
+        text_count_.RenderText(g_screen, SCREEN_WIDTH*0.5, 2);
+
+        g_ground.Render(g_screen);
+        SDL_RenderPresent(g_screen);
+
+        bool game_over = player.GetIsDie();
+        if (game_over == true)
+        {
+            Sleep(500);
+            int ret_menu = SDLCommonFunc::ShowMenu(g_screen, g_font_MENU,
+                                                   "Player Again", "Exit",
+                                                    "img//MENU END.png");
+            if (ret_menu == 1)
+            {
+                quit = true;
+                continue;
+            }
+            else
+            {
+                quit = false;
+                manage_block.FreeBlock();
+                goto again_label;
+            }
+        }
+
+        int val1 = fps.get_ticks();
+        if (fps.get_ticks() < 1000 / FRAMES_PER_SECOND)
+        {
+            SDL_Delay((1000 / FRAMES_PER_SECOND) - fps.get_ticks());
+        }
+    }
+
+    close();
     return 0;
 }

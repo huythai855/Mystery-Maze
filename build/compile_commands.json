@@ -1,0 +1,42 @@
+[
+{
+  "directory": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build",
+  "command": "C:\\PROGRA~1\\CODEBL~1\\MinGW\\bin\\X86_64~2.EXE  @CMakeFiles/thai.dir/includes_CXX.rsp -g -o CMakeFiles\\thai.dir\\BaseObject.cpp.obj -c C:\\Users\\LENOVO\\OneDrive\\Desktop\\FlappyBird\\Mystery-Maze\\BaseObject.cpp",
+  "file": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/BaseObject.cpp"
+},
+{
+  "directory": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build",
+  "command": "C:\\PROGRA~1\\CODEBL~1\\MinGW\\bin\\X86_64~2.EXE  @CMakeFiles/thai.dir/includes_CXX.rsp -g -o CMakeFiles\\thai.dir\\BlockObject.cpp.obj -c C:\\Users\\LENOVO\\OneDrive\\Desktop\\FlappyBird\\Mystery-Maze\\BlockObject.cpp",
+  "file": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/BlockObject.cpp"
+},
+{
+  "directory": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build",
+  "command": "C:\\PROGRA~1\\CODEBL~1\\MinGW\\bin\\X86_64~2.EXE  @CMakeFiles/thai.dir/includes_CXX.rsp -g -o CMakeFiles\\thai.dir\\CommonFunc.cpp.obj -c C:\\Users\\LENOVO\\OneDrive\\Desktop\\FlappyBird\\Mystery-Maze\\CommonFunc.cpp",
+  "file": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/CommonFunc.cpp"
+},
+{
+  "directory": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build",
+  "command": "C:\\PROGRA~1\\CODEBL~1\\MinGW\\bin\\X86_64~2.EXE  @CMakeFiles/thai.dir/includes_CXX.rsp -g -o CMakeFiles\\thai.dir\\Geometric.cpp.obj -c C:\\Users\\LENOVO\\OneDrive\\Desktop\\FlappyBird\\Mystery-Maze\\Geometric.cpp",
+  "file": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/Geometric.cpp"
+},
+{
+  "directory": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build",
+  "command": "C:\\PROGRA~1\\CODEBL~1\\MinGW\\bin\\X86_64~2.EXE  @CMakeFiles/thai.dir/includes_CXX.rsp -g -o CMakeFiles\\thai.dir\\ImpTimer.cpp.obj -c C:\\Users\\LENOVO\\OneDrive\\Desktop\\FlappyBird\\Mystery-Maze\\ImpTimer.cpp",
+  "file": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/ImpTimer.cpp"
+},
+{
+  "directory": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build",
+  "command": "C:\\PROGRA~1\\CODEBL~1\\MinGW\\bin\\X86_64~2.EXE  @CMakeFiles/thai.dir/includes_CXX.rsp -g -o CMakeFiles\\thai.dir\\PlayerObject.cpp.obj -c C:\\Users\\LENOVO\\OneDrive\\Desktop\\FlappyBird\\Mystery-Maze\\PlayerObject.cpp",
+  "file": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/PlayerObject.cpp"
+},
+{
+  "directory": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build",
+  "command": "C:\\PROGRA~1\\CODEBL~1\\MinGW\\bin\\X86_64~2.EXE  @CMakeFiles/thai.dir/includes_CXX.rsp -g -o CMakeFiles\\thai.dir\\TextObject.cpp.obj -c C:\\Users\\LENOVO\\OneDrive\\Desktop\\FlappyBird\\Mystery-Maze\\TextObject.cpp",
+  "file": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/TextObject.cpp"
+},
+{
+  "directory": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/build",
+  "command": "C:\\PROGRA~1\\CODEBL~1\\MinGW\\bin\\X86_64~2.EXE  @CMakeFiles/thai.dir/includes_CXX.rsp -g -o CMakeFiles\\thai.dir\\main.cpp.obj -c C:\\Users\\LENOVO\\OneDrive\\Desktop\\FlappyBird\\Mystery-Maze\\main.cpp",
+  "file": "C:/Users/LENOVO/OneDrive/Desktop/FlappyBird/Mystery-Maze/main.cpp"
+}
+]
